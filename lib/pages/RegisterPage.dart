@@ -1,91 +1,48 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:snackfood/theme.dart';
 
-import 'ForgetPasswordPage.dart';
-
-class Loginpage extends StatefulWidget {
-  final VoidCallback showRegisterPage;
-  const Loginpage({Key? key, required this.showRegisterPage}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  final VoidCallback showLoginPage;
+  const RegisterPage({
+    Key? key,
+    required this.showLoginPage,
+  }) : super(key: key);
 
   @override
-  _LoginpageState createState() => _LoginpageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginpageState extends State<Loginpage> {
-  // controller text
+class _RegisterPageState extends State<RegisterPage> {
+// controller text
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _passwordConfirmController = TextEditingController();
 
-  Future signIn() async {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return Center(
-          child: CircularProgressIndicator(color: Colors.redAccent),
-        );
-      },
-    );
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
 
-    // try sign in
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
+  Future signUp() async {
+    if (passwordConfirmed()) {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
       );
-      // pop the loading circle
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      // pop the loading circle
-      Navigator.pop(context);
-      // WRONG EMAIL
-      if (e.code == 'user-not-found') {
-        // show error to user
-        wrongEmailMessage();
-      }
-
-      // WRONG PASSWORD
-      else if (e.code == 'wrong-password') {
-        // show error to user
-        wrongPasswordMessage();
-      }
     }
   }
 
-  // wrong email message popup
-  void wrongEmailMessage() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          backgroundColor: Color.fromARGB(255, 170, 35, 26),
-          title: Center(
-            child: Text(
-              'Incorrect Email',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  // wrong password message popup
-  void wrongPasswordMessage() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          backgroundColor: Color.fromARGB(255, 148, 13, 13),
-          title: Center(
-            child: Text(
-              'Incorrect Password',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        );
-      },
-    );
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() ==
+        _passwordConfirmController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -106,14 +63,14 @@ class _LoginpageState extends State<Loginpage> {
                 ),
                 // HALOO
                 Text(
-                  'Halooo rafly',
+                  'Halooo',
                   style: poppinsTextStyle.copyWith(
                     fontWeight: FontWeight.w700,
                     fontSize: 36,
                   ),
                 ),
                 Text(
-                  'Login duluuu yukkkk',
+                  'Registrasi duluuu yukkkk',
                   style: poppinsTextStyle.copyWith(
                     fontWeight: FontWeight.w400,
                     fontSize: 20,
@@ -170,39 +127,39 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+
+                SizedBox(height: 10.0),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) {
-                              return ForgetPasswordPage();
-                            }),
-                          );
-                        },
-                        child: Text(
-                          'Lupa Password?',
-                          style: poppinsTextStyle.copyWith(
-                            color: Colors.redAccent,
-                          ),
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: TextField(
+                      controller: _passwordConfirmController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(15),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.redAccent),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        hintText: 'Confirm Password',
                       ),
-                    ],
+                    ),
                   ),
                 ),
-                SizedBox(height: 20),
+
+                SizedBox(height: 20.0),
                 // SIGNIN
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                    onTap: signIn,
+                    onTap: signUp,
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -211,7 +168,7 @@ class _LoginpageState extends State<Loginpage> {
                       ),
                       child: Center(
                         child: Text(
-                          'SIGN IN',
+                          'SIGN UP',
                           style: poppinsTextStyle.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
@@ -229,15 +186,15 @@ class _LoginpageState extends State<Loginpage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Belum punya akun ? ',
+                      'Sudah punya akun ? ',
                       style: poppinsTextStyle.copyWith(
                         color: greyColor,
                       ),
                     ),
                     GestureDetector(
-                      onTap: widget.showRegisterPage,
+                      onTap: widget.showLoginPage,
                       child: Text(
-                        'Register Disini',
+                        'Login',
                         style: poppinsTextStyle.copyWith(
                           color: Colors.redAccent,
                           fontWeight: FontWeight.w700,

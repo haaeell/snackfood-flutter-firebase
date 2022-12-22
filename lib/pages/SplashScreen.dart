@@ -42,7 +42,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               height: 150,
             ),
             Text(
-              'SnackFood',
+              'SnackFoods',
               style: poppinsTextStyle.copyWith(
                 color: Color.fromARGB(255, 170, 9, 9),
                 fontWeight: FontWeight.w700,

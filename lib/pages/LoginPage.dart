@@ -58,7 +58,7 @@ class _LoginpageState extends State<Loginpage> {
                 ),
                 // HALOO
                 Text(
-                  'Halooo',
+                  'Halooo rafly',
                   style: poppinsTextStyle.copyWith(
                     fontWeight: FontWeight.w700,
                     fontSize: 36,

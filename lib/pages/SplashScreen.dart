@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:snackfood/mainPage.dart';
+import 'package:snackfood/auth/mainPage.dart';
 import 'package:snackfood/theme.dart';
 
 class SplashScreenPage extends StatefulWidget {

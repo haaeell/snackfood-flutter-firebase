@@ -63,7 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 // HALOO
                 Text(
-                  'Haii',
+                  'Hay',
                   style: poppinsTextStyle.copyWith(
                     fontWeight: FontWeight.w700,
                     fontSize: 36,

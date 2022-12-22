@@ -70,7 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 Text(
-                  'Registrasi duluuu yukkkk',
+                  'Registrasi duluuu yukkk',
                   style: poppinsTextStyle.copyWith(
                     fontWeight: FontWeight.w400,
                     fontSize: 20,

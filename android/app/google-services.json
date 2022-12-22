@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "121246325595",
+    "project_id": "snackfood-7a117",
+    "storage_bucket": "snackfood-7a117.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121246325595:android:bb17079f1a8eba027a987e",
+        "android_client_info": {
+          "package_name": "com.example.snackfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121246325595-o3o9r21vv8aipsl8qhun2amq72tegs1b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAukRlEVmEynHFPG60uHtIODTs56FwjvcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121246325595-o3o9r21vv8aipsl8qhun2amq72tegs1b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

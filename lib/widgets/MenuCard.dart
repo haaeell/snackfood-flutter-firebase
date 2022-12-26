@@ -25,13 +25,13 @@ class MenuCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(
-                  20,
+                  100,
                 ),
                 child: Container(
-                  width: 130,
-                  height: 110,
+                  width: 120,
+                  height: 120,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(200),
+                    borderRadius: BorderRadius.circular(100),
                   ),
                   child: Image.network(
                     menu.image,
@@ -39,7 +39,9 @@ class MenuCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 20),
+              SizedBox(
+                width: 30,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -52,7 +54,7 @@ class MenuCard extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 5),
                           child: Text(
-                            'terlaris',
+                            'promo',
                             style: poppinsTextStyle.copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.w700,
@@ -80,7 +82,7 @@ class MenuCard extends StatelessWidget {
                   Text(
                     menu.name,
                     style: poppinsTextStyle.copyWith(
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: FontWeight.w500,
                       color: blackColor,
                     ),
@@ -99,11 +101,11 @@ class MenuCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'Rp ${menu.price}',
+                        'Rp ${menu.pricePromo}',
                         style: poppinsTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: yellowColor,
+                          color: Colors.redAccent,
                         ),
                       ),
                     ],

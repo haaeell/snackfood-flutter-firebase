@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:snackfood/theme.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -21,28 +22,63 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordConfirmController = TextEditingController();
 
   @override
-  void dispose() {
-    _passwordController.dispose();
-    _emailController.dispose();
-    super.dispose();
-  }
+  // sign user up method
+  void signUp() async {
+    // show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(
+          child: Container(
+            width: 60,
+            height: 60,
+            child: LoadingIndicator(
+              indicatorType: Indicator.pacman,
+              colors: [Colors.redAccent],
+            ),
+          ),
+        );
+      },
+    );
 
-  Future signUp() async {
-    if (passwordConfirmed()) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
+    // try creating the user
+    try {
+      // check if password is confirmed
+      if (_passwordController.text == _passwordConfirmController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
+      } else {
+        // show error message, passwords don't match
+        showErrorMessage("Passwords don't match!");
+      }
+      // pop the loading circle
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      // pop the loading circle
+      Navigator.pop(context);
+      // show error message
+      showErrorMessage(e.code);
     }
   }
 
-  bool passwordConfirmed() {
-    if (_passwordController.text.trim() ==
-        _passwordConfirmController.text.trim()) {
-      return true;
-    } else {
-      return false;
-    }
+  // error message to user
+  void showErrorMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Colors.redAccent,
+          title: Center(
+            child: Text(
+              message,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override

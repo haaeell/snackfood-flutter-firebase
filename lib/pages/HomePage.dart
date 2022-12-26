@@ -3,6 +3,8 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:snackfood/models/menu.dart';
+import 'package:snackfood/pages/KeranjangPage.dart';
+import 'package:snackfood/pages/ProfilPage.dart';
 import 'package:snackfood/theme.dart';
 import 'package:snackfood/widgets/MenuCard.dart';
 
@@ -26,29 +28,41 @@ class _HomepageState extends State<Homepage> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 32,
+              vertical: 22,
               horizontal: 20,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Text(
-                    'Haloo,' + user.email!,
-                    style: poppinsTextStyle.copyWith(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: blackColor,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Haloo,',
+                      style: poppinsTextStyle.copyWith(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        color: blackColor,
+                      ),
                     ),
-                  ),
+                    Image.asset(
+                      'assets/icon.png',
+                      width: 50,
+                      height: 50,
+                    )
+                  ],
+                ),
+                Text(user.email!),
+                SizedBox(
+                  height: 40,
                 ),
                 Center(
                   child: Text(
-                    'Selamat datang di Snackfood',
+                    'Mau makan apa hari ini?',
                     style: poppinsTextStyle.copyWith(
-                      fontSize: 16,
+                      fontSize: 20,
                       fontWeight: FontWeight.w400,
-                      color: greyColor,
+                      color: blackColor,
                     ),
                   ),
                 ),
@@ -63,8 +77,8 @@ class _HomepageState extends State<Homepage> {
                       bottomRight: Radius.circular(64),
                       bottomLeft: Radius.circular(16),
                     ),
-                    child: Image.asset(
-                      'assets/thumbnail.png',
+                    child: Image.network(
+                      'https://assets.materialup.com/uploads/45b248c8-e813-4437-8e76-3e54d8621933/preview.jpg',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -114,31 +128,16 @@ class _HomepageState extends State<Homepage> {
           ),
         ),
       ),
-      Center(
-        child: Text('keranjang'),
-      ),
-      Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(user.email!),
-            MaterialButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              color: Colors.redAccent,
-              child: Text(
-                'LOGOUT',
-                style: TextStyle(color: Colors.white),
-              ),
-            )
-          ],
-        ),
-      ),
+      Keranjangpage(),
+      Profilpage(),
     ];
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        title: Text('SnackFood'),
+      ),
       body: widgets[currentIndex],
       bottomNavigationBar: ConvexAppBar(
         items: [

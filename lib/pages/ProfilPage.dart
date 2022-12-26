@@ -26,7 +26,7 @@ class _ProfilpageState extends State<Profilpage> {
               height: 20,
             ),
             Text(
-              'Haikal',
+              'Profil',
               style: poppinsTextStyle.copyWith(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,

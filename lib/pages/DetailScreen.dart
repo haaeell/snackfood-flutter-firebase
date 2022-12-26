@@ -267,7 +267,7 @@ class _DetailScreen extends State<DetailScreen> {
                                           locale: 'id',
                                           symbol: 'Rp ',
                                           decimalDigits: 0)
-                                      .format(price),
+                                      .format(_price),
                                   style: poppinsTextStyle.copyWith(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,

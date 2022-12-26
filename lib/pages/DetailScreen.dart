@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:snackfood/models/size.dart';
 import 'package:badges/badges.dart';
 
+// ignore: must_be_immutable
 class DetailScreen extends StatefulWidget {
   int id;
   String image;
@@ -26,6 +27,7 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreen extends State<DetailScreen> {
+  // ignore: unused_field
   int _id;
   final String _image;
   final String _name;
@@ -38,6 +40,7 @@ class _DetailScreen extends State<DetailScreen> {
       this._pricePromo, this._note, this._isPromo);
 
   launchUrl(String url) async {
+    // ignore: deprecated_member_use
     launch(url);
   }
 
@@ -46,8 +49,8 @@ class _DetailScreen extends State<DetailScreen> {
   late int dataPrice = _price;
   late int dataPricePromo = _pricePromo;
 
-  int price = 28000;
-  int pricePromo = 22000;
+  late int price = dataPrice;
+  late int pricePromo = dataPricePromo;
 
   bool isMini = true;
   bool isSedang = false;
@@ -177,7 +180,7 @@ class _DetailScreen extends State<DetailScreen> {
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(10)),
                                     child: Container(
-                                      color: Colors.redAccent,
+                                      color: redCollor,
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 15, vertical: 5),
                                       child: Text(
@@ -223,7 +226,7 @@ class _DetailScreen extends State<DetailScreen> {
                                   onTap: _minus,
                                   child: Container(
                                     decoration: const BoxDecoration(
-                                        color: Colors.redAccent,
+                                        color: Colors.red,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(10))),
                                     padding: const EdgeInsets.all(5),
@@ -247,7 +250,7 @@ class _DetailScreen extends State<DetailScreen> {
                                   onTap: _plus,
                                   child: Container(
                                     decoration: const BoxDecoration(
-                                        color: Colors.redAccent,
+                                        color: Colors.red,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(10))),
                                     padding: const EdgeInsets.all(5),
@@ -267,7 +270,7 @@ class _DetailScreen extends State<DetailScreen> {
                                           locale: 'id',
                                           symbol: 'Rp ',
                                           decimalDigits: 0)
-                                      .format(_price),
+                                      .format(price),
                                   style: poppinsTextStyle.copyWith(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
@@ -285,7 +288,7 @@ class _DetailScreen extends State<DetailScreen> {
                                   style: poppinsTextStyle.copyWith(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w700,
-                                    color: Colors.redAccent,
+                                    color: redCollor,
                                   ),
                                 ),
                               ],
@@ -411,7 +414,7 @@ class _DetailScreen extends State<DetailScreen> {
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 40),
+                            const SizedBox(height: 70),
                             // ignore: sized_box_for_whitespace
                             Container(
                               width: MediaQuery.of(context).size.width,
@@ -442,14 +445,14 @@ class _DetailScreen extends State<DetailScreen> {
                                   ),
                                   TextButton(
                                     style: TextButton.styleFrom(
-                                      backgroundColor: Colors.redAccent,
+                                      backgroundColor: redCollor,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
                                     onPressed: () {
                                       launchUrl(
-                                          'https://wa.me/6285321726312?text=Saya%20beli%20burger%20$i%20(Rp%20$pricePromo)');
+                                          'https://wa.me/6285321726312?text=Saya%20beli%20$_name%20$i%20(Rp%20$pricePromo)');
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -487,7 +490,7 @@ class _DetailScreen extends State<DetailScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: redCollor,
                         borderRadius: BorderRadius.all(
                           new Radius.circular(5.0),
                         ),

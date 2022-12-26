@@ -48,7 +48,7 @@ class MenuCard extends StatelessWidget {
                   menu.isPromo
                       ? Container(
                           decoration: const BoxDecoration(
-                              color: Colors.redAccent,
+                              color: Colors.red,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5))),
                           padding: const EdgeInsets.symmetric(

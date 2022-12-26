@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:snackfood/theme.dart';
@@ -23,7 +22,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   // sign user up method
-  void signUp() async {
+  // ignore: override_on_non_overriding_member
+  Future signUp() async {
     // show loading circle
     showDialog(
       context: context,
@@ -51,7 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
         );
       } else {
         // show error message, passwords don't match
-        showErrorMessage("Passwords don't match!");
+        showErrorMessage("Password ga sama");
       }
       // pop the loading circle
       Navigator.pop(context);

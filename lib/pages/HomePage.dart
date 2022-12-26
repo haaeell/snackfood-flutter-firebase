@@ -57,13 +57,17 @@ class _HomepageState extends State<Homepage> {
                   height: 40,
                 ),
                 Center(
-                  child: Text(
-                    'Mau makan apa hari ini?',
-                    style: poppinsTextStyle.copyWith(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
-                      color: blackColor,
-                    ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Mau makan apa hari ini?',
+                        style: poppinsTextStyle.copyWith(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: blackColor,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -135,8 +139,17 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-        title: Text('SnackFood'),
+        backgroundColor: redCollor,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('SnackFood'),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search_off_outlined),
+            )
+          ],
+        ),
       ),
       body: widgets[currentIndex],
       bottomNavigationBar: ConvexAppBar(
@@ -145,7 +158,7 @@ class _HomepageState extends State<Homepage> {
           const TabItem(icon: Icons.shopping_bag, title: 'Keranjang'),
           const TabItem(icon: Icons.person, title: 'Profil')
         ],
-        backgroundColor: Colors.redAccent,
+        backgroundColor: redCollor,
         color: Colors.white,
         height: 50,
         initialActiveIndex: 0,

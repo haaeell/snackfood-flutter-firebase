@@ -16,10 +16,10 @@ class SizeCard extends StatelessWidget {
                 horizontal: 10,
               ),
               decoration: BoxDecoration(
-                color: Colors.redAccent,
+                color: redCollor,
                 borderRadius: BorderRadius.circular(100),
                 border: Border.all(
-                  color: Colors.redAccent,
+                  color: redCollor,
                   width: 1.5,
                 ),
               ),
@@ -40,7 +40,7 @@ class SizeCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
-                  color: Colors.redAccent,
+                  color: redCollor,
                   width: 1,
                 ),
               ),

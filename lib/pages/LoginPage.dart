@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:snackfood/theme.dart';
 
 import 'ForgetPasswordPage.dart';
@@ -22,7 +23,14 @@ class _LoginpageState extends State<Loginpage> {
       context: context,
       builder: (context) {
         return Center(
-          child: CircularProgressIndicator(color: Colors.redAccent),
+          child: Container(
+            width: 60,
+            height: 60,
+            child: LoadingIndicator(
+              indicatorType: Indicator.pacman,
+              colors: [Colors.redAccent],
+            ),
+          ),
         );
       },
     );
@@ -106,7 +114,7 @@ class _LoginpageState extends State<Loginpage> {
                 ),
                 // HALOO
                 Text(
-                  'Halooo rafly',
+                  'Halooo',
                   style: poppinsTextStyle.copyWith(
                     fontWeight: FontWeight.w700,
                     fontSize: 36,

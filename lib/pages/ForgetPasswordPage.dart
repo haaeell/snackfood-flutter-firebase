@@ -96,7 +96,10 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
             onPressed: () {
               passwordReset();
             },
-            child: Text('reset password'),
+            child: Text(
+              'reset password',
+              style: poppinsTextStyle.copyWith(color: whiteColor),
+            ),
             color: Colors.redAccent,
           ),
         ],

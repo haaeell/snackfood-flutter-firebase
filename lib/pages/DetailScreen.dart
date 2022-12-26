@@ -4,6 +4,7 @@ import 'package:snackfood/theme.dart';
 import 'package:snackfood/widgets/SizeCard.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:snackfood/models/size.dart';
+import 'package:badges/badges.dart';
 
 class DetailScreen extends StatefulWidget {
   int id;
@@ -157,7 +158,7 @@ class _DetailScreen extends State<DetailScreen> {
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(20),
+                      top: Radius.circular(40),
                     ),
                     color: Colors.white,
                   ),
@@ -227,7 +228,7 @@ class _DetailScreen extends State<DetailScreen> {
                                             Radius.circular(10))),
                                     padding: const EdgeInsets.all(5),
                                     child: const Icon(
-                                      Icons.add,
+                                      Icons.remove,
                                       color: Colors.white,
                                     ),
                                   ),
@@ -370,9 +371,9 @@ class _DetailScreen extends State<DetailScreen> {
                             ),
                             const SizedBox(height: 18),
                             Text(
-                              'Lokasi Burger Jawa',
+                              'Lokasi Snackfood',
                               style: poppinsTextStyle.copyWith(
-                                fontSize: 14,
+                                fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: blackColor,
                               ),
@@ -380,7 +381,8 @@ class _DetailScreen extends State<DetailScreen> {
                             const SizedBox(height: 12),
                             InkWell(
                               onTap: () {
-                                launchUrl('https://g.page/Pasar-mayong?share');
+                                launchUrl(
+                                    'https://goo.gl/maps/jbcSBjGLLzuL7o618');
                               },
                               child: Row(
                                 children: [
@@ -390,7 +392,7 @@ class _DetailScreen extends State<DetailScreen> {
                                   ),
                                   const SizedBox(width: 18),
                                   Text(
-                                    'Jl.Raya Mayong jepara\nJawa Tengah',
+                                    'Jl.gonjen kidul kasihan\nYogyakarta',
                                     style: poppinsTextStyle.copyWith(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
@@ -415,16 +417,27 @@ class _DetailScreen extends State<DetailScreen> {
                               width: MediaQuery.of(context).size.width,
                               // ignore: deprecated_member_use
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
                                     padding: EdgeInsets.all(5),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    child: Icon(
-                                      Icons.shopping_bag,
-                                      color: Colors.amber,
-                                      size: 40,
+                                    child: Badge(
+                                      badgeContent: Text(
+                                        i.toString(),
+                                        style: poppinsTextStyle.copyWith(
+                                          color: Colors.white,
+                                          fontSize: 8,
+                                        ),
+                                      ),
+                                      child: Icon(
+                                        Icons.shopping_bag,
+                                        color: Colors.amber,
+                                        size: 30,
+                                      ),
                                     ),
                                   ),
                                   TextButton(

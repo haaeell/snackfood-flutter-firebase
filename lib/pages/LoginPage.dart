@@ -121,7 +121,7 @@ class _LoginpageState extends State<Loginpage> {
                   ),
                 ),
                 Text(
-                  'Login duluuu yukkkk',
+                  'Login duluuu yukkk',
                   style: poppinsTextStyle.copyWith(
                     fontWeight: FontWeight.w400,
                     fontSize: 20,

@@ -222,6 +222,43 @@ class _DetailScreen extends State<DetailScreen> {
                                   ),
                                 ),
                                 const Spacer(),
+                                Column(
+                                  children: [
+                                    Text(
+                                      NumberFormat.currency(
+                                              locale: 'id',
+                                              symbol: 'Rp ',
+                                              decimalDigits: 0)
+                                          .format(price),
+                                      style: poppinsTextStyle.copyWith(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        color: greyColor,
+                                        decoration: TextDecoration.lineThrough,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      NumberFormat.currency(
+                                              locale: 'id',
+                                              symbol: 'Rp ',
+                                              decimalDigits: 0)
+                                          .format(pricePromo),
+                                      style: poppinsTextStyle.copyWith(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700,
+                                        color: redCollor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
                                 InkWell(
                                   onTap: _minus,
                                   child: Container(
@@ -262,37 +299,8 @@ class _DetailScreen extends State<DetailScreen> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 12),
-                            Row(
-                              children: [
-                                Text(
-                                  NumberFormat.currency(
-                                          locale: 'id',
-                                          symbol: 'Rp ',
-                                          decimalDigits: 0)
-                                      .format(price),
-                                  style: poppinsTextStyle.copyWith(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    color: greyColor,
-                                    decoration: TextDecoration.lineThrough,
-                                  ),
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  NumberFormat.currency(
-                                          locale: 'id',
-                                          symbol: 'Rp ',
-                                          decimalDigits: 0)
-                                      .format(pricePromo),
-                                  style: poppinsTextStyle.copyWith(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                    color: redCollor,
-                                  ),
-                                ),
-                              ],
-                            ),
+                            const SizedBox(width: 16),
+
                             const SizedBox(height: 18),
                             Text(
                               'Pilih Ukuran',
